@@ -1,18 +1,14 @@
 <script lang="ts">
-	import { fullscreen } from '$lib';
+	import { clickOutside } from '$lib';
 
 	let el: HTMLDivElement;
 
-	const onFullscreenChange = () => {
-		console.log(document.fullscreenElement === el);
+	const onClick = (e: Event) => {
+		console.log(e);
 	};
 </script>
 
-<div
-	bind:this={el}
-	class="h-10 w-10 bg-red-100"
-	use:fullscreen
-	on:fullscreenchange={onFullscreenChange}
->
-	<div class="bg-blue-50" on:click|stopPropagation>hello</div>
+<div use:clickOutside on:outclick={() => console.log('click outside')}>
+	<div class="bg-blue-200">blue</div>
+	<div class="bg-red-200">red</div>
 </div>
