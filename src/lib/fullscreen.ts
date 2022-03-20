@@ -1,6 +1,10 @@
 import type { Action } from './types';
 
-export function fullscreen(node: HTMLElement): ReturnType<Action<any>> {
+type Fullscreen = {
+	(node: HTMLElement): ReturnType<Action<any>>;
+};
+
+export const fullscreen: Fullscreen = (node) => {
 	const click = () => {
 		if (document.fullscreenElement === node) {
 			document.exitFullscreen();
@@ -12,9 +16,8 @@ export function fullscreen(node: HTMLElement): ReturnType<Action<any>> {
 	node.addEventListener('click', click);
 
 	return {
-		update() {},
 		destroy() {
 			node.removeEventListener('click', click);
 		}
 	};
-}
+};

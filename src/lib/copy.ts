@@ -1,6 +1,10 @@
 import type { Action } from './types';
 
-export function copy(node: HTMLElement, text: string): ReturnType<Action<string>> {
+type Copy = {
+	(node: HTMLElement, text: string): ReturnType<Action<string>>;
+};
+
+export const copy: Copy = (node, text) => {
 	const click = async () => {
 		if (navigator.clipboard) {
 			try {
@@ -41,4 +45,4 @@ export function copy(node: HTMLElement, text: string): ReturnType<Action<string>
 			node.removeEventListener('click', click, true);
 		}
 	};
-}
+};
