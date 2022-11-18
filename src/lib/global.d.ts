@@ -3,5 +3,6 @@ declare namespace svelte.JSX {
 		onusecopy?: (event: CustomEvent<string>) => void;
 		onusecopyerror?: (event: CustomEvent<string>) => void;
 		onoutclick?: (event: CustomEvent) => void;
+		onhover?: (event: CustomEvent<boolean>) => void;
 	}
 }
